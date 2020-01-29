@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   </head>
   <body>
+    {% load humanize %}
     <div class="container">
 
       <div class="row">
@@ -24,9 +25,9 @@
                   <tbody>
                     {% for data in balance %}
                     <tr>
-                        <td>{{ data.saldo }}</td>
-                        <td>{{ data.ingresos }}</td>
-                        <td>{{ data.gastos }}</td>
+                        <td>{{ data.saldo|intcomma }}</td>
+                        <td>{{ data.ingresos|intcomma }}</td>
+                        <td>{{ data.gastos|intcomma }}</td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -41,6 +42,7 @@
                 <table class="striped">
                   <thead>
                     <tr>
+                      <th></th>
                       <th>Categoria</th>
                       <th>Tipo</th>
                       <th>Monto</th>
@@ -50,7 +52,8 @@
                   <tbody>
                     {% for data in movimiento %}
                     <tr>
-                        <td>{{ data.categoria.descripcion|title}}</td>
+                        <td>{{ forloop.counter|ordinal }}</td>
+                        <td>{{ data.categoria.descripcion|upper }}</td>
                         <td>{{ data.tipo }}</td>
                         <td>{{ data.monto }}</td>
                         <td>{{ data.fecha|date:"d/m/y" }}</td>
