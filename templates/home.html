@@ -48,11 +48,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {% for datos in mostrarMo %}
+                    {% for data in movimiento %}
                     <tr>
-                        <td>{{ datos.categoria.descripcion }}}</td>
-                        <td>{{ datos.salario }}</td>
-                        <td>{{ datos.monto }}</td>
+                        <td>{{ data.categoria.descripcion }}}</td>
+                        <td>{{ data.tipo }}</td>
+                        <td>{{ data.monto }}</td>
+                        <td>{{ data.fecha }}</td>
+                        <td>
+                          <a href="{% url 'borrarMovimiento' data.id %}">
+                            <i class="material-icons">delete_forever</i>
+                          </a>
+                        </td>
                     </tr>
                     {% endfor %}
                   </tbody>

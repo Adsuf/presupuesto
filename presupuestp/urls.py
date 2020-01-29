@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.getBadget),
     #path('', mostrarMov, name="mostrar"),
     path('movimiento/', views.Movement, name="movimiento"),
+    path('borrarMovimiento/<int:pk>', views.deleteMovement, name="borrarMovimiento"),
     path('admin/', admin.site.urls),
 
 ]
