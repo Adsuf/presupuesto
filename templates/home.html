@@ -50,10 +50,10 @@
                   <tbody>
                     {% for data in movimiento %}
                     <tr>
-                        <td>{{ data.categoria.descripcion }}}</td>
+                        <td>{{ data.categoria.descripcion|title}}</td>
                         <td>{{ data.tipo }}</td>
                         <td>{{ data.monto }}</td>
-                        <td>{{ data.fecha }}</td>
+                        <td>{{ data.fecha|date:"d/m/y" }}</td>
                         <td>
                           <a href="{% url 'borrarMovimiento' data.id %}">
                             <i class="material-icons">delete_forever</i>

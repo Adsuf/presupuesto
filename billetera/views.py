@@ -7,7 +7,8 @@ from .forms import MovimientoForm
 def getBadget(request):
     balance = Balance.objects.all()
     movimiento = Movimiento.objects.all()
-    return render(request, 'home.html', {"balance" : balance})
+    context = {"balance" : balance, "movimiento" : movimiento}
+    return render(request, 'home.html', context)
 
 def mostarMovimiento(request):
     movimientos = Movimiento.objects.all()
@@ -22,14 +23,14 @@ def Movement(request):
         if form.is_valid():
             form.save()
             #se afecta el Balance
-            balance = Balance.objects.get(pk=1)
-            if request.POST['tipo'] == "Gasto": #GASTO
-                balance.saldo -= int(request.POST['monto'])
-                balance.gastos += int(request.POST['monto'])
-            else:
-                balance.saldo += int(request.POST['monto'])
-                balance.ingresos += int(request.POST['monto'])
-            balance.save()
+            #balance = Balance.objects.get(pk=1)
+            #if request.POST['tipo'] == "Gasto": #GASTO
+            #    balance.saldo -= int(request.POST['monto'])
+            #    balance.gastos += int(request.POST['monto'])
+            #else:
+            #    balance.saldo += int(request.POST['monto'])
+            #    balance.ingresos += int(request.POST['monto'])
+            #balance.save()
             updateBalance(request.POST['tipo'], int(request.POST['monto']))
             return HttpResponseRedirect('/')
     return render(request, template_name, {'form': form})
@@ -61,5 +62,5 @@ def alterBalance(tipo, monto):
     else:
         balance.saldo -= monto
         balance.ingresos -= monto
-    balance.save()
-    return
+        balance.save()
+        return
