@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Presupuesto</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   </head>
   <body>
@@ -59,7 +60,7 @@
                         <td>{{ data.fecha|date:"d/m/y" }}</td>
                         <td>
                           <a href="{% url 'borrarMovimiento' data.id %}">
-                            <i class="material-icons">delete_forever</i>
+                            <i class="delete material-icons">delete_forever</i>
                           </a>
                         </td>
                     </tr>
