@@ -1,0 +1,51 @@
+DEBUG:root:El valor del monto es 1500
+ERROR:billetera.views:Esto es una prueba!
+DEBUG:root:El valor del monto es 70000
+ERROR:billetera.views:Esto es una prueba!
+INFO:django.utils.autoreload:D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+DEBUG:asyncio:Using proactor: IocpProactor
+2020-01-29 18:53:49,780 - root - Thread-3 - DEBUG - El valor del monto es 650000
+2020-01-29 18:53:50,055 - billetera.views - Thread-3 - INFO - Se ha consultado el Balance
+2020-01-29 19:19:43,580 - billetera.views - Thread-5 - INFO - Se ha consultado el Balance
+2020-01-29 19:20:37,367 - root - Thread-11 - DEBUG - El valor del monto es 150000
+2020-01-29 19:21:05,818 - billetera.views - Thread-13 - INFO - Se ha consultado el Balance
+2020-01-29 19:19:10,588 - django.utils.autoreload - MainThread - INFO - D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+2020-01-29 19:21:17,001 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor
+2020-01-29 19:21:17,029 - billetera.views - Thread-11 - INFO - Se ha consultado el Balance
+2020-01-29 19:22:47,007 - root - Thread-3 - DEBUG - El valor del monto es 152000
+2020-01-29 19:22:47,771 - django.request - Thread-3 - ERROR - Internal Server Error: /movimiento/
+Traceback (most recent call last):
+  File "D:\Seminario Python\Seminario\presupuestp\billetera\views.py", line 38, in Movement
+    updateBalance(request.POST['tipo'], (request.POST['monto']))
+  File "D:\Seminario Python\Seminario\presupuestp\billetera\views.py", line 49, in updateBalance
+    balance.saldo -= monto
+TypeError: unsupported operand type(s) for -=: 'decimal.Decimal' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\Envs\mi_entorno_django\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\USUARIO\Envs\mi_entorno_django\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\USUARIO\Envs\mi_entorno_django\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Seminario Python\Seminario\presupuestp\billetera\views.py", line 39, in Movement
+    except Execption as e:
+NameError: name 'Execption' is not defined
+2020-01-29 19:23:13,432 - django.utils.autoreload - MainThread - INFO - D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+2020-01-29 19:23:13,433 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor
+2020-01-29 19:23:28,405 - root - Thread-3 - DEBUG - El valor del monto es 50000
+2020-01-29 19:23:28,615 - billetera.views - Thread-3 - INFO - Se ha consultado el Balance
+2020-01-29 19:24:01,468 - root - Thread-7 - DEBUG - El valor del monto es 45200
+2020-01-29 19:24:01,644 - billetera.views - Thread-7 - INFO - Se ha consultado el Balance
+2020-01-29 19:28:41,988 - django.utils.autoreload - MainThread - INFO - D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+2020-01-29 19:28:41,988 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor
+2020-01-29 19:35:38,194 - django.utils.autoreload - MainThread - INFO - D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+2020-01-29 19:35:38,195 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor
+2020-01-29 19:37:09,732 - django.utils.autoreload - MainThread - INFO - D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+2020-01-29 19:37:09,733 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor
+2020-01-29 19:38:15,927 - billetera.views - Thread-1 - INFO - Se ha consultado el Balance
+2020-01-29 19:39:38,353 - django.utils.autoreload - MainThread - INFO - D:\Seminario Python\Seminario\presupuestp\billetera\views.py changed, reloading.
+2020-01-29 19:39:38,354 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor
+2020-01-29 19:41:09,916 - asyncio - MainThread - DEBUG - Using proactor: IocpProactor

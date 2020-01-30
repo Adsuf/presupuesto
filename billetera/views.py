@@ -3,10 +3,21 @@ from django.http import HttpResponseRedirect
 from .models import Balance, Movimiento, Categoria
 from .forms import MovimientoForm
 
+import logging
+
+#Recupera o crear una instancia logging
+logger = logging.getLogger(__name__)
+
+#se escribirá el log en un archivo
+logging.basicConfig(filename='demo.log',
+                    level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(threadName)s - %(levelname)s - %(message)s')
+
 # Mostrar Presupuesto.
 def getBadget(request):
     balance = Balance.objects.all()
     movimiento = Movimiento.objects.all()
+    logger.info("Se ha consultado el Balance")
     context = {"balance" : balance, "movimiento" : movimiento}
     return render(request, 'home.html', context)
 
@@ -22,16 +33,8 @@ def Movement(request):
         form = MovimientoForm(request.POST)
         if form.is_valid():
             form.save()
-            #se afecta el Balance
-            #balance = Balance.objects.get(pk=1)
-            #if request.POST['tipo'] == "Gasto": #GASTO
-            #    balance.saldo -= int(request.POST['monto'])
-            #    balance.gastos += int(request.POST['monto'])
-            #else:
-            #    balance.saldo += int(request.POST['monto'])
-            #    balance.ingresos += int(request.POST['monto'])
-            #balance.save()
-            updateBalance(request.POST['tipo'], int(request.POST['monto']))
+            logging.debug("El valor del monto es {}".format(request.POST['monto']))
+            updateBalance(request.POST['tipo'], (request.POST['monto']))
             return HttpResponseRedirect('/')
     return render(request, template_name, {'form': form})
 
